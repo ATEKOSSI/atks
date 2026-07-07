@@ -116,3 +116,28 @@ if (localStorage.getItem("music") === "play") {
         }
     }, 500);
 }
+document.addEventListener("DOMContentLoaded", () => {
+    const musique = document.getElementById("musique");
+
+    if (musique) {
+        // 1. Récupère la position venant de la page 3
+        const positionSauvegardee = localStorage.getItem("positionMusique");
+        if (positionSauvegardee) {
+            musique.currentTime = parseFloat(positionSauvegardee);
+        }
+
+        // 2. Relance la musique
+        musique.play().catch(() => {
+            window.addEventListener('click', () => {
+                musique.play();
+            }, { once: true });
+        });
+        
+        // 3. Si tu as une page 5 après, remets le setInterval ici aussi :
+        setInterval(() => {
+            if (!musique.paused) {
+                localStorage.setItem("positionMusique", musique.currentTime);
+            }
+        }, 500);
+    }
+});
