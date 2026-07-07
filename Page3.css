@@ -1,0 +1,258 @@
+/* ==========================
+   STYLE GÉNÉRAL
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:Arial, sans-serif;
+
+    background:linear-gradient(135deg,#2d051d,#5d1238,#8b2f5b);
+
+    color:white;
+
+    overflow-x:hidden;
+}
+
+/* ==========================
+   CONTENEUR
+========================== */
+
+.container{
+
+    width:90%;
+
+    max-width:1100px;
+
+    margin:auto;
+
+    padding:50px 0;
+
+}
+
+/* ==========================
+   TITRE
+========================== */
+
+h1{
+
+    text-align:center;
+
+    font-size:50px;
+
+    color:#ffe6f0;
+
+    margin-bottom:10px;
+
+}
+
+.ligne{
+
+    width:120px;
+
+    height:4px;
+
+    background:#ffd166;
+
+    margin:20px auto 40px;
+
+    border-radius:20px;
+
+}
+
+/* ==========================
+   INTRODUCTION
+========================== */
+
+.intro{
+
+    text-align:center;
+
+    font-size:22px;
+
+    line-height:1.8;
+
+    max-width:800px;
+
+    margin:0 auto 60px;
+
+    color:#ffe0ea;
+
+}
+
+/* ==========================
+   SOUVENIRS
+========================== */
+
+.souvenir{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:40px;
+
+    margin:70px 0;
+
+    flex-wrap:wrap;
+
+}
+
+/* Alterne le sens */
+
+.inverse{
+
+    flex-direction:row-reverse;
+
+}
+
+/* ==========================
+   CAPTURES
+========================== */
+
+.capture{
+
+    width:320px;
+
+    border-radius:20px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.4);
+
+    transition:.5s;
+
+}
+
+.capture:hover{
+
+    transform:scale(1.05);
+
+}
+
+/* ==========================
+   COMMENTAIRES
+========================== */
+
+.commentaire{
+
+    flex:1;
+
+    min-width:300px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(12px);
+
+    padding:30px;
+
+    border-radius:20px;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+
+}
+
+.commentaire h2{
+
+    color:#ffd166;
+
+    margin-bottom:20px;
+
+    font-size:28px;
+
+}
+
+.commentaire p{
+
+    font-size:20px;
+
+    line-height:1.8;
+
+}
+
+/* ==========================
+   FIN
+========================== */
+
+.fin{
+
+    text-align:center;
+
+    margin-top:80px;
+
+}
+
+.fin p{
+
+    font-size:26px;
+
+    margin-bottom:30px;
+
+}
+
+/* ==========================
+   BOUTON
+========================== */
+
+.btn{
+
+    display:inline-block;
+
+    padding:18px 40px;
+
+    background:#ff4d88;
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:40px;
+
+    font-size:22px;
+
+    transition:.4s;
+
+}
+
+.btn:hover{
+
+    background:white;
+
+    color:#ff4d88;
+
+    transform:translateY(-5px);
+
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:768px){
+
+    .souvenir{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+    .inverse{
+
+        flex-direction:column;
+
+    }
+
+    .capture{
+
+        width:90%;
+
+    }
+
+}

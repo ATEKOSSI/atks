@@ -1,0 +1,116 @@
+/* Reset simple */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fond général */
+body{
+
+    font-family:Arial,sans-serif;
+
+    background:
+    radial-gradient(circle at top,#b34775 0%,transparent 25%),
+    linear-gradient(135deg,#2b0419,#5b1238,#8b2f5b);
+
+    color:white;
+
+    overflow-x:hidden;
+
+}
+
+
+/* Conteneur principal */
+.container{
+
+    width:90%;
+
+    max-width:900px;
+
+    margin:auto;
+
+    padding:60px 20px;
+
+}
+
+
+/* INTRO */
+#intro {
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* CADEAU (étape interactive) */
+#cadeau {
+    margin-top: 30px;
+    cursor: pointer;
+    animation: float 2s infinite ease-in-out;
+}
+
+#cadeau p {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+/* Image du cadeau */
+#boite {
+    width: 180px;
+    transition: transform 0.3s ease;
+}
+
+#boite:hover {
+    transform: scale(1.1);
+}
+
+/* SURPRISE (cachée au début) */
+#surprise {
+    display: none;
+    animation: fadeIn 1.5s ease-in-out forwards;
+}
+
+#surprise img.photo {
+    width: 250px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* Ligne décorative */
+.ligne {
+    width: 60%;
+    height: 2px;
+    background: white;
+    margin: 15px auto;
+    opacity: 0.6;
+}
+
+/* Message */
+#message {
+    font-size: 20px;
+    margin-top: 10px;
+    min-height: 30px;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}

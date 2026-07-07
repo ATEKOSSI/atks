@@ -1,0 +1,230 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:Arial,sans-serif;
+
+    background:
+    radial-gradient(circle at top,#b34775 0%,transparent 25%),
+    linear-gradient(135deg,#2b0419,#5b1238,#8b2f5b);
+
+    color:white;
+
+    overflow-x:hidden;
+
+}
+
+/* Conteneur */
+
+.container{
+
+    width:90%;
+
+    max-width:900px;
+
+    margin:auto;
+
+    padding:60px 20px;
+
+}
+
+/* Titre */
+
+h1{
+
+    text-align:center;
+
+    font-size:55px;
+
+    color:#ffe8f1;
+
+    margin-bottom:15px;
+
+}
+
+.ligne{
+
+    width:130px;
+
+    height:4px;
+
+    background:#ffd166;
+
+    margin:20px auto 40px;
+
+    border-radius:30px;
+
+}
+
+/* Introduction */
+
+.intro{
+
+    text-align:center;
+
+    font-size:24px;
+
+    color:#ffe0ea;
+
+    line-height:1.8;
+
+    margin-bottom:60px;
+
+}
+
+/* Les cartes */
+
+.raison{
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(12px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-left:6px solid #ffd166;
+
+    padding:25px;
+
+    margin:30px 0;
+
+    border-radius:20px;
+
+    font-size:22px;
+
+    line-height:1.8;
+
+    transition:.5s;
+
+    opacity:0;
+
+    transform:translateY(80px);
+
+}
+
+/* Animation */
+
+.raison.visible{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+/* Survol */
+
+.raison:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.4);
+
+}
+
+/* Citation */
+
+.citation{
+
+    margin:70px auto;
+
+    text-align:center;
+
+    font-size:26px;
+
+    color:#ffd166;
+
+    font-style:italic;
+
+    line-height:1.8;
+
+}
+
+/* Bouton */
+
+.btn{
+
+    display:block;
+
+    width:280px;
+
+    margin:50px auto;
+
+    text-align:center;
+
+    padding:18px;
+
+    background:#ff4d88;
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:40px;
+
+    font-size:22px;
+
+    transition:.4s;
+
+}
+
+.btn:hover{
+
+    background:white;
+
+    color:#ff4d88;
+
+    transform:scale(1.05);
+
+}
+/* ==============================
+   COEURS QUI TOMBENT
+============================== */
+
+.coeur{
+
+    position:fixed;
+
+    top:-30px;
+
+    animation:tomber 6s linear forwards;
+
+    pointer-events:none;
+
+    z-index:999;
+
+}
+
+@keyframes tomber{
+
+    from{
+
+        transform:translateY(0);
+
+        opacity:1;
+
+    }
+
+    to{
+
+        transform:translateY(110vh);
+
+        opacity:0;
+
+    }
+
+}
+
+/* Transition de la page */
+
+body{
+
+    opacity:1;
+
+    transition:opacity .8s;
+
+}

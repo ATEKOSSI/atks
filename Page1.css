@@ -1,0 +1,144 @@
+.images{
+    width:250px;
+    border-radius:20px;
+    margin-bottom:20px;
+    box-shadow:0 0 20px rgba(255,255,255,0.4);
+    animation:apparition 2s;
+}
+.images{
+
+    transition:0.5s;
+
+}
+
+.images:hover{
+
+    transform:scale(1.05);
+
+    box-shadow:0 0 35px rgba(255,255,255,.6);
+
+}
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+
+}
+body{
+        opacity:0;
+    animation:apparitionPage 1s forwards;
+
+    background:
+    radial-gradient(circle at top,#b34775 0%,transparent 35%),
+    linear-gradient(135deg,#32051f,#5d0d3b,#8a2d5f);
+}
+
+@keyframes apparitionPage{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+
+}
+
+
+.tourner{
+    text-decoration:none;
+    color:#6b0f1a;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.citation{
+    font-size:20px;
+    color:#ffd5e5;
+    font-style:italic;
+    margin-bottom:30px;
+    opacity:0;
+    animation:fadeIn 2s forwards;
+}
+h1{
+    font-size:48px;
+    color:#ffe5ef;
+    letter-spacing:2px;
+    text-shadow:0 0 15px rgba(255,255,255,.25);
+}
+.container{
+    width:80%;
+    max-width:750px;
+    padding:45px;
+    border-radius:25px;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(10px);
+    box-shadow:0 15px 40px rgba(0,0,0,.4);
+
+    border:1px solid rgba(255,255,255,.15);
+    transition:0.5s;
+
+}
+.container:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 20px 50px rgba(0,0,0,.5);
+
+}
+.ligne{
+    width:120px;
+    height:3px;
+    margin:20px auto;
+    background:#ffd166;
+    border-radius:20px;
+}
+.contenu{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:40px;
+
+    margin-top:40px;
+
+    flex-wrap:wrap;
+
+}
+.lettre{
+
+    flex:1;
+
+    max-width:420px;
+
+    background:linear-gradient(to bottom,#fffdf7,#f8edd4);
+
+    color:#4b2c20;
+
+    padding:30px;
+
+    border-radius:15px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.35);
+
+    text-align:left;
+
+    line-height:1.8;
+}
+#texte{
+
+    font-size:20px;
+
+}

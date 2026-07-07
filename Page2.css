@@ -1,0 +1,144 @@
+/* =========================
+   STYLE GÉNÉRAL
+========================= */
+
+body{
+    margin:0;
+    padding:0;
+    font-family:Arial, sans-serif;
+
+    background:linear-gradient(135deg,#3b0a2a,#6b1748,#a33f72);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    min-height:100vh;
+
+    color:white;
+}
+
+/* =========================
+   CONTENEUR
+========================= */
+
+.container{
+    text-align:center;
+    width:90%;
+    max-width:900px;
+}
+
+h1{
+    font-size:45px;
+    margin-bottom:10px;
+}
+
+.instruction{
+    font-size:20px;
+    color:#ffd6e8;
+    margin-bottom:40px;
+}
+
+/* =========================
+   ENVELOPPE
+========================= */
+
+.enveloppe{
+
+    width:180px;
+    height:120px;
+
+    background:#f7d9a8;
+
+    margin:40px auto;
+
+    border-radius:10px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:70px;
+
+    cursor:pointer;
+
+    transition:.5s;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.4);
+
+}
+
+.enveloppe:hover{
+
+    transform:scale(1.08);
+
+}
+
+/* =========================
+   LETTRE
+========================= */
+
+.lettre{
+
+    display:none;
+
+    margin:40px auto;
+
+    width:80%;
+    max-width:650px;
+
+    background:#fffdf5;
+
+    color:#4d2b1f;
+
+    padding:35px;
+
+    border-radius:15px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.4);
+
+    text-align:left;
+
+    line-height:1.8;
+
+}
+
+/* =========================
+   TEXTE
+========================= */
+
+#texte{
+
+    font-size:22px;
+
+}
+
+/* =========================
+   BOUTON
+========================= */
+
+.suivant{
+
+    display:inline-block;
+
+    margin-top:30px;
+
+    padding:15px 30px;
+
+    background:#8b2f5b;
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:30px;
+
+    transition:.4s;
+
+}
+
+.suivant:hover{
+
+    background:#b34775;
+
+}
