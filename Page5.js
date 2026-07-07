@@ -11,22 +11,50 @@ document.addEventListener("DOMContentLoaded", () => {
     const texte = "Je te souhaite un bonheur immense, rempli d'amour, de paix et de sourires chaque jour ❤️";
     let i = 0;
 
-    // Étape 1 : clic pour ouvrir le cadeau
-    boite.addEventListener("click", () => {
+    // ==========================================
+    // 1. Récupération et synchronisation audio
+    // ==========================================
+    if (musique) {
+        // Récupère la position venant de la page 4
+        const positionSauvegardee = localStorage.getItem("positionMusique");
+        if (positionSauvegardee) {
+            musique.currentTime = parseFloat(positionSauvegardee);
+        }
 
-        // Transition cadeau → surprise
-        cadeau.style.display = "none";
-        intro.style.display = "none";
-        surprise.style.display = "block";
-
-        // Lancer musique (obligatoirement après interaction utilisateur)
+        // Tente de lancer la musique dès l'arrivée
         musique.play().catch(() => {
-            console.log("Lecture audio bloquée par le navigateur");
+            console.log("Lecture en attente d'une interaction utilisateur.");
         });
 
-        // Lancer écriture du message
-        typeWriter();
-    });
+        // Enregistre en continu si c'est la dernière page (ou pour sécurité)
+        setInterval(() => {
+            if (!musique.paused) {
+                localStorage.setItem("positionMusique", musique.currentTime);
+            }
+        }, 500);
+    }
+
+    // ==========================================
+    // 2. Étape 1 : clic pour ouvrir le cadeau
+    // ==========================================
+    if (boite) {
+        boite.addEventListener("click", () => {
+            // Transition cadeau → surprise
+            cadeau.style.display = "none";
+            intro.style.display = "none";
+            surprise.style.display = "block";
+
+            // Assure la lecture après l'action du clic si l'autoplay a été bloqué
+            if (musique && musique.paused) {
+                musique.play().catch((err) => {
+                    console.error("Erreur de lecture audio :", err);
+                });
+            }
+
+            // Lancer l'écriture du message
+            typeWriter();
+        });
+    }
 
     // Effet machine à écrire
     function typeWriter() {
@@ -37,56 +65,4 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-});
-
-// Page4.js et Page5.js
-// Assure-toi qu'il n'y a PAS d'autre "const musique" plus bas dans le fichier !
-const musique = document.getElementById("musique");
-
-if (localStorage.getItem("music") === "play") {
-    // 1. On récupère la position de la page précédente
-    const positionSauvegardee = localStorage.getItem("musique_position");
-    if (positionSauvegardee) {
-        musique.currentTime = parseFloat(positionSauvegardee);
-    }
-
-    // 2. On relance la musique
-    musique.play().catch(() => {
-        // Sécurité : si le navigateur bloque, on attend un clic sur cette nouvelle page
-        window.addEventListener('click', () => {
-            musique.play();
-        }, { once: true });
-    });
-
-    // 3. On continue d'enregistrer la position pour la page d'après
-    setInterval(() => {
-        if (!musique.paused) {
-            localStorage.setItem("musique_position", musique.currentTime);
-        }
-    }, 500);
-}
-document.addEventListener("DOMContentLoaded", () => {
-    const musique = document.getElementById("musique");
-
-    if (musique) {
-        // 1. Récupère la position venant de la page 3
-        const positionSauvegardee = localStorage.getItem("positionMusique");
-        if (positionSauvegardee) {
-            musique.currentTime = parseFloat(positionSauvegardee);
-        }
-
-        // 2. Relance la musique
-        musique.play().catch(() => {
-            window.addEventListener('click', () => {
-                musique.play();
-            }, { once: true });
-        });
-        
-        // 3. Si tu as une page 5 après, remets le setInterval ici aussi :
-        setInterval(() => {
-            if (!musique.paused) {
-                localStorage.setItem("positionMusique", musique.currentTime);
-            }
-        }, 500);
-    }
 });
