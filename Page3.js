@@ -90,3 +90,28 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 500);
     }
 });
+document.addEventListener("DOMContentLoaded", () => {
+    const musique = document.getElementById("musique");
+
+    if (musique) {
+        // 1. Récupère la position venant de la page 2
+        const positionSauvegardee = localStorage.getItem("positionMusique");
+        if (positionSauvegardee) {
+            musique.currentTime = parseFloat(positionSauvegardee);
+        }
+
+        // 2. Lance la musique automatiquement (ou au clic si bloqué)
+        musique.play().catch(() => {
+            window.addEventListener('click', () => {
+                musique.play();
+            }, { once: true });
+        });
+
+        // 3. SAUVEGARDE EN CONTINU POUR LA PAGE 4
+        setInterval(() => {
+            if (!musique.paused) {
+                localStorage.setItem("positionMusique", musique.currentTime);
+            }
+        }, 500);
+    }
+});
