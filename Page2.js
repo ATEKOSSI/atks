@@ -1,7 +1,6 @@
 // ===========================
 // Récupération des éléments
 // ===========================
-
 const enveloppe = document.getElementById("enveloppe");
 const lettre = document.getElementById("lettre");
 const zoneTexte = document.getElementById("texte");
@@ -9,7 +8,6 @@ const zoneTexte = document.getElementById("texte");
 // ===========================
 // Message de la lettre
 // ===========================
-
 const message = `Mon amour ❤️,
 
 Avant de continuer cette petite aventure,
@@ -27,65 +25,59 @@ Le plus beau reste encore à découvrir. ❤️`;
 // ===========================
 // Animation d'écriture
 // ===========================
-
 let position = 0;
 
 function ecrireTexte() {
-
     if (position < message.length) {
-
         zoneTexte.innerHTML += message.charAt(position);
-
         position++;
-
         setTimeout(ecrireTexte, 50);
-
     }
-
 }
 
 // ===========================
 // Ouverture de l'enveloppe
 // ===========================
+if (enveloppe) {
+    enveloppe.addEventListener("click", function () {
+        // Faire disparaître l'enveloppe
+        enveloppe.style.display = "none";
 
-enveloppe.addEventListener("click", function () {
+        // Afficher la lettre
+        lettre.style.display = "block";
 
-    // Faire disparaître l'enveloppe
-    enveloppe.style.display = "none";
+        // Commencer à écrire
+        ecrireTexte();
+    });
+}
 
-    // Afficher la lettre
-    lettre.style.display = "block";
-
-    // Commencer à écrire
-    ecrireTexte();
-
-});
-// Attend que la page HTML soit complètement chargée et prête
+// ===========================
+// Gestion de la Musique en Continu
+// ===========================
 document.addEventListener("DOMContentLoaded", () => {
-    
     const musique = document.getElementById("musique");
 
-    // On vérifie si la musique doit être lancée
-    if (musique && localStorage.getItem("music") === "play") {
-        
-        // 1. Récupération de la position
-        const positionSauvegardee = localStorage.getItem("musique_position");
+    if (musique) {
+        // 1. Récupération de la position (Synchronisé avec la clé de script.js)
+        const positionSauvegardee = localStorage.getItem("positionMusique");
         if (positionSauvegardee) {
             musique.currentTime = parseFloat(positionSauvegardee);
         }
 
         // 2. Tentative de lecture automatique
         musique.play().catch(() => {
-            // Sécurité en cas de blocage du navigateur (Autoplay restriction)
+            console.log("Lecture automatique bloquée par le navigateur. Elle se lancera dès que l'utilisateur cliquera.");
+            
+            // Sécurité : la musique démarre dès que l'utilisateur clique sur la page ou sur l'enveloppe
             window.addEventListener('click', () => {
                 musique.play();
             }, { once: true });
         });
 
-        // 3. Sauvegarde de la position en continu pour la page suivante
+        // 3. Sauvegarde de la position en continu pour la page SUIVANTE (Page3.html, etc.)
         setInterval(() => {
             if (!musique.paused) {
-                localStorage.setItem("musique_position", musique.currentTime);
+                localStorage.setItem("positionMusique", musique.currentTime);
             }
         }, 500);
     }
