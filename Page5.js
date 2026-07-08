@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+    // Identification de tous les éléments de la page 5
     const intro = document.getElementById("intro");
     const cadeau = document.getElementById("cadeau");
     const surprise = document.getElementById("surprise");
@@ -21,12 +22,13 @@ document.addEventListener("DOMContentLoaded", () => {
             musique.currentTime = parseFloat(positionSauvegardee);
         }
 
-        // Tente de lancer la musique dès l'arrivée
+        // Tente de lancer la musique dès l'arrivée.
+        // C'est normal si ça bloque ici, le clic sur la boîte règlera ça.
         musique.play().catch(() => {
             console.log("Lecture en attente d'une interaction utilisateur.");
         });
 
-        // Enregistre en continu si c'est la dernière page (ou pour sécurité)
+        // Enregistre en continu pour la sécurité
         setInterval(() => {
             if (!musique.paused) {
                 localStorage.setItem("positionMusique", musique.currentTime);
@@ -39,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==========================================
     if (boite) {
         boite.addEventListener("click", () => {
-            // Transition cadeau → surprise
+            // Transition visuelle : cadeau → surprise
             cadeau.style.display = "none";
             intro.style.display = "none";
             surprise.style.display = "block";
@@ -47,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // Assure la lecture après l'action du clic si l'autoplay a été bloqué
             if (musique && musique.paused) {
                 musique.play().catch((err) => {
-                    console.error("Erreur de lecture audio :", err);
+                    console.error("Erreur de lecture audio lors du clic :", err);
                 });
             }
 
